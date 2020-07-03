@@ -1,7 +1,8 @@
 const EditorPrompt = require("inquirer/lib/prompts/editor");
 const  fs = require('fs');
 const inquirer = require("inquirer");
-let data = "";
+const generateMarkdown = require("./utils/generateMarkdown.js");
+const path = require("path")
 // array of questions for user
 
 const questions = [
@@ -62,13 +63,7 @@ const questions = [
 
 // function to write README file
 function writeToFile(fileName, data) {
-    inquirer.prompt(questions).then(function(response){
-        fs.writeFile(readme.md, utf8, response.tile){
-            
-        }
-        
-        
-    });
+    return fs.writeFileSync(path.join(process.cwd(), fileName), data);
     
     
 
@@ -76,7 +71,11 @@ function writeToFile(fileName, data) {
 
 // function to initialize program
 function init() {
-    
+    inquirer.prompt(questions).then(function(response){
+        writeToFile("README.md", generateMarkdown({...response}));
+        
+        
+    });
     
 
 }
@@ -85,3 +84,5 @@ function init() {
 // function call to initialize program
 init();
 
+
+module.exports = init;
