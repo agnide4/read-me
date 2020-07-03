@@ -6,8 +6,9 @@
 function generateMarkdown(data) {
   return `# TITLE: ${data.Title}
 
-          #DESCRIPTION
+          # DESCRIPTION: 
           ${data.Description}
+          
 
           # Table of content
           ${data["Table of contents"]}
@@ -21,16 +22,15 @@ function generateMarkdown(data) {
           # licenses
           ${data.Licenses}
 
-          #Contributions
+          # Contributions
           ${data.Contributing}
           
-          #Testing
+          # Testing
           ${data.Tests}
 
-          #Questions
+          # Questions
           "https://github.com/${data["git hub user ID"]}"
           ${data.email}   
-
 
 `;
 }
